@@ -1,0 +1,82 @@
+{
+  "modules-left": ["sway/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["tray","pulseaudio", "backlight", "battery", "custom/vpn"],
+
+   "sway/workspaces": {
+       "disable-scroll": true,
+       "disable-markup" : false,
+       "all-outputs": true,
+       "format": "  {icon}  ",
+       "format-icons": {
+           "1": "1",
+           "2": "2",
+           "3": "3",
+           "4": "4",
+           "5": "5",
+           "focused": ".",
+           "default": "X"
+       }
+    },
+   "custom/vpn":{
+       "format": "{}",
+       "exec": "~/.config/waybar/scripts/vpn.sh",
+       "restart-interval": 5,
+       "on-click": "~/.config/waybar/scripts/vpn.sh --toggle", 
+       "on-click-right": "gnome-control-center network" 
+     },
+  "tray": {
+      "icon-size": 21,
+      "spacing": 10
+  },
+  "clock": {
+      "tooltip-format": "{:%Y-%m-%d | %H:%M}",
+      "format-alt": "{:%Y-%m-%d}"
+  },
+  "cpu": {
+      "format": "{usage}% "
+  },
+  "memory": {
+      "format": "{}% "
+  },
+  "temperature": {
+      "critical-threshold": 80,
+      "format": "{temperatureC}°C "
+  },
+  "backlight": {
+      "format": "{percent}% {icon}",
+      "states": [0,50],
+      "format-icons": ["", ""]
+  },
+  "battery": {
+      "states": {
+          "good": 95,
+          "warning": 30,
+          "critical": 15
+      },
+      "format": "{capacity}% {icon}",
+      "format-icons": ["", "", "", "", ""]
+  },
+  "network": {
+      "format-wifi": "{essid} ({signalStrength}%) ",
+      "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+      "format-disconnected": "Disconnected ⚠",
+      "interval" : 7
+  },
+  "pulseaudio": {
+      "scroll-step": 5,
+      "format": "{volume}% {icon}",
+      "format-bluetooth": "{volume}% {icon}",
+      "format-muted": "",
+      "format-icons": {
+          "headphones": "",
+          "handsfree": "",
+          "headset": "",
+          "phone": "",
+          "portable": "",
+          "car": "",
+          "default": ["", ""]
+      },
+      "on-click-right": "pavucontrol"
+    }
+}
